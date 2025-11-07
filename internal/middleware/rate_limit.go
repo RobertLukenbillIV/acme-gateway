@@ -48,13 +48,6 @@ func (rl *RateLimiter) allow() bool {
 	return false
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 // RateLimit middleware enforces rate limiting
 func RateLimit(requestsPerSecond int) func(http.Handler) http.Handler {
 	limiter := newRateLimiter(requestsPerSecond)

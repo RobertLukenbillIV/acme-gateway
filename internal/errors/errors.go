@@ -43,5 +43,6 @@ func WriteError(w http.ResponseWriter, code string, message string, status int, 
 		TraceID: traceID,
 	}
 
-	json.NewEncoder(w).Encode(resp)
+	// Ignore encoding errors at this point since headers are already sent
+	_ = json.NewEncoder(w).Encode(resp)
 }
